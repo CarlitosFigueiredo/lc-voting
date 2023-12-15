@@ -41,4 +41,12 @@ class Idea extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get the user that owns the phone.
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
