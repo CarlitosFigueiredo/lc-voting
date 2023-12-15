@@ -11,6 +11,8 @@ class Idea extends Model
 {
     use HasFactory, Sluggable;
 
+    const PAGINATION_COUNT = 10;
+
     /**
      * The attributes that aren't mass assignable.
      *
