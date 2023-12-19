@@ -65,7 +65,7 @@
                             href="{{ route('login') }}"
                             class="inline-block justify-center w-1/2 h-11 text-xs bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3"
                         >
-                            Sign Up
+                            Login
                         </a>
                     </div>
                 @endauth
