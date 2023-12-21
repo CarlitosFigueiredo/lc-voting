@@ -12,6 +12,10 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Open+Sans:400,500,600&display=swap" rel="stylesheet" />
 
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <livewire:styles />
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -23,15 +27,28 @@
         </a>
 
         <div class="flex items-center mt-2 md:mt-0">
-
-            @auth
-                <a href="#">
-                    <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp" alt="avatar"
-                        class="w-10 h-10 rounded-full">
-                </a>
-            @else
-                <livewire:welcome.navigation />
-            @endauth
+            @if (Route::has('login'))
+                <div class="px-6 py-4">
+                    @auth
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log out') }}
+                            </a>
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+            <a href="#">
+                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp" alt="avatar" class="w-10 h-10 rounded-full">
+            </a>
         </div>
     </header>
 
@@ -67,37 +84,30 @@
                         >
                             Login
                         </a>
+                        <a
+                            href="{{ route('register') }}"
+                            class="inline-block justify-center w-1/2 h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3 mt-4"
+                        >
+                            Sign Up
+                        </a>
                     </div>
                 @endauth
 
             </div>
         </div>
-        <div class="w-full px-2 md:px-0 md:w-175">
-            <nav class="hidden md:flex items-center justify-between text-xs">
-                <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
-                    <li><a href="#" class="border-b-4 pb-3 border-blue">All Ideas (87)</a></li>
-                    <li><a href="#"
-                            class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Considering
-                            (6)</a></li>
-                    <li><a href="#"
-                            class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">In
-                            Progress (1)</a></li>
-                </ul>
 
-                <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
-                    <li><a href="#"
-                            class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Implemented
-                            (10)</a></li>
-                    <li><a href="#"
-                            class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Closed
-                            (55)</a></li>
-                </ul>
-            </nav>
+        <div class="w-full px-2 md:px-0 md:w-175">
+            
+            <livewire:status-filters />
+
+
             <div class="mt-8">
                 {{ $slot }}
             </div>
         </div>
     </main>
+
+    <livewire:scripts />
 </body>
 
 </html>
