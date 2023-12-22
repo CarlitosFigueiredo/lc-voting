@@ -12,18 +12,16 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Open+Sans:400,500,600&display=swap" rel="stylesheet" />
 
-    <livewire:styles />
-
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
 </head>
 
 <body class="font-sans bg-gray-background text-gray-900 text-sm">
     <header class="flex flex-col md:flex-row items-center justify-between px-8 py-4">
-        <a href="#">
+        <a href="/">
             <img src="{{ asset('img/logo.svg') }}" alt="Logo">
         </a>
-
         <div class="flex items-center mt-2 md:mt-0">
             @if (Route::has('login'))
                 <div class="px-6 py-4">
@@ -104,8 +102,6 @@
             </div>
         </div>
     </main>
-
-    <livewire:scripts />
 </body>
 
 </html>
