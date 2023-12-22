@@ -30,9 +30,9 @@
             @if (Route::has('login'))
                 <div class="px-6 py-4">
                     @auth
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="#">
                             @csrf
-                            <a href="{{ route('logout') }}"
+                            <a href="#"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log out') }}
