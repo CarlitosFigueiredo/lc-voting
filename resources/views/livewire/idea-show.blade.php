@@ -121,10 +121,10 @@
                 </div>
             </div>
             @auth
-                @if (auth()->user()->isAdmin())
+                {{-- @if (auth()->user()->isAdmin()) --}}
 
-                    @livewire('set-status', ['idea' => $idea], key($idea->id)) 
-                @endif
+                    @livewire('set-status', ['idea' => $idea], key($idea->id))
+                {{-- @endif --}}
             @endauth
         </div>
 
