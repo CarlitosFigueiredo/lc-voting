@@ -75,12 +75,11 @@ class User extends Authenticatable
             . '.png';
     }
 
-    public function isAdmin_tic()
+    public function isAdmin()
     {
         return in_array($this->email, [
             'medeiros1@gmail.com',
             'medeirosfigueiredoc@gmail.com',
-            'medeirosfigueiredoc3@gmail.com',
         ]);
     }
 }
