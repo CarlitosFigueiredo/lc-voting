@@ -66,12 +66,21 @@ class User extends Authenticatable
         } else {
             $integerToUse = ord(strtolower($firstCharacter)) - 96;
         }
-        
+
         return 'https://www.gravatar.com/avatar/'
             . md5($this->email)
             . '?s=200'
             . '&d=https://s3.amazonaws.com/laracasts/images/forum/avatars/default-avatar-'
             . $integerToUse
             . '.png';
+    }
+
+    public function isAdmin()
+    {
+        return in_array($this->email, [
+            'medeiros1@gmail.com',
+            'medeirosfigueiredoc@gmail.com',
+            'medeirosfigueiredoc3@gmail.com',
+        ]);
     }
 }

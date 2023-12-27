@@ -13,11 +13,18 @@ class IdeaShow extends Component
     public $votesCount;
     public $hasVoted;
 
+    protected $listeners = ['statusWasUpdated'];
+
     public function mount(Idea $idea, $votesCount)
     {
         $this->idea = $idea;
         $this->votesCount = $votesCount;
         $this->hasVoted = $idea->isVotedByUser(auth()->user());
+    }
+
+    public function statusWasUpdated()
+    {
+        $this->idea->refresh();
     }
 
     public function vote()
@@ -35,6 +42,7 @@ class IdeaShow extends Component
             $this->votesCount--;
             $this->hasVoted = false;
         } else {
+
             try {
                 $this->idea->vote(auth()->user());
             } catch (DuplicateVoteException $e) {
