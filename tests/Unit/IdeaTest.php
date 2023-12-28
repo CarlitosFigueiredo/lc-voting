@@ -4,9 +4,7 @@ namespace Tests\Unit;
 
 use App\Exceptions\DuplicateVoteException;
 use App\Exceptions\VoteNotFoundException;
-use App\Models\Category;
 use App\Models\Idea;
-use App\Models\Status;
 use App\Models\User;
 use App\Models\Vote;
 use Illuminate\Foundation\Testing\RefreshDatabase;

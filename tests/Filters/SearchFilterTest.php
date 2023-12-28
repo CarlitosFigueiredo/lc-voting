@@ -1,13 +1,11 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Filters;
 
 use App\Livewire\IdeasIndex;
 use App\Models\Category;
 use App\Models\Idea;
 use App\Models\Status;
-use App\Models\User;
-use App\Models\Vote;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
