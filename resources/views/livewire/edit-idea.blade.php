@@ -17,12 +17,11 @@
             aria-hidden="true">
         </div>
 
-
             <div
                 x-show.transition.origin.bottom.duration.300ms="isOpen"
                 class="modal bg-white rounded-tl-xl rounded-tr-xl overflow-hidden transform transition-all py-4 sm:max-w-lg sm:w-full"
+                @click.away="isOpen = false"
             >
-
 
             <div class="absolute top-0 right-0 pt-4 pr-4">
                 <button

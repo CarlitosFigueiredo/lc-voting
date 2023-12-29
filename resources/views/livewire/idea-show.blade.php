@@ -43,17 +43,17 @@
                                 x-cloak x-show.transition.origin.top.left="isOpen" @click.away="isOpen = false"
                                 @keydown.escape.window="isOpen = false">
                                 <li>
-                                    <a
-                                        href="#"
-                                        @click="
-                                            isOpen = false
-                                            $dispatch('custom-show-edit-modal')
-                                        "
-                                        class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3"
-                                    >
-                                        Edit Idea
-                                    </a>
-                                </li>
+                                        <a
+                                            href="#"
+                                            @click="
+                                                isOpen = false
+                                                $dispatch('custom-show-edit-modal')
+                                            "
+                                            class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3"
+                                        >
+                                            Edit Idea
+                                        </a>
+                                    </li>
                                 <li><a href="#"
                                         class="hover:bg-gray-100 block transition duration-150 ease-in px-5 py-3">Delete
                                         Idea</a></li>
@@ -124,10 +124,10 @@
                 </div>
             </div>
             @auth
-            {{-- @if (auth()->user()->isAdmin()) --}}
+                @if (auth()->user()->isAdmin())
 
-            @livewire('set-status', ['idea' => $idea], key($idea->id))
-            {{-- @endif --}}
+                    @livewire('set-status', ['idea' => $idea], key($idea->id))
+                @endif
             @endauth
         </div>
 
@@ -137,15 +137,15 @@
                 <div class="text-gray-400 text-xs leading-none">Votes</div>
             </div>
             @if ($hasVoted)
-            <button type="button" wire:click.prevent="vote"
-                class="w-32 h-11 text-xs bg-blue text-white font-semibold uppercase rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3">
-                <span>Voted</span>
-            </button>
+                <button type="button" wire:click.prevent="vote"
+                    class="w-32 h-11 text-xs bg-blue text-white font-semibold uppercase rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3">
+                    <span>Voted</span>
+                </button>
             @else
-            <button type="button" wire:click.prevent="vote"
-                class="w-32 h-11 text-xs bg-gray-200 font-semibold uppercase rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3">
-                <span>Vote</span>
-            </button>
+                <button type="button" wire:click.prevent="vote"
+                    class="w-32 h-11 text-xs bg-gray-200 font-semibold uppercase rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3">
+                    <span>Vote</span>
+                </button>
             @endif
         </div>
     </div> <!-- end buttons-container -->
