@@ -7,7 +7,11 @@
         isOpen = true
         $nextTick(() => $refs.confirmButton.focus())
     "
-    x-init="$wire.on('ideaWasUpdated', () => {isOpen = false})"
+    x-init="
+        $wire.on('ideaWasDeleted', () => {
+            isOpen = false
+        })
+    "
     class="fixed z-10 inset-0 overflow-y-auto"
     aria-labelledby="modal-title"
     role="dialog"
@@ -25,6 +29,7 @@
         <div
             x-show.transition.opacity.duration.300ms="isOpen"
             class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+            @click.away="isOpen = false"
         >
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start">
