@@ -29,7 +29,6 @@ class DeleteIdea extends Component
         return redirect()->route('idea.index');
     }
 
-
     public function render()
     {
         return view('livewire.delete-idea');
