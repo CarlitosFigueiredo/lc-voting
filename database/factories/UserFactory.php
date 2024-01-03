@@ -32,13 +32,11 @@ class UserFactory extends Factory
         ];
     }
 
-    public function admin()
+    public function admin(): static
     {
-        return $this->state(function (array $attributes) {
-            return [
-                'email' => 'medeirosfigueiredoc@gmail.com',
-            ];
-        });
+        return $this->state(fn (array $attributes) => [
+            'email' => 'medeirosfigueiredoc@gmail.com',
+        ]);
     }
 
     /**
